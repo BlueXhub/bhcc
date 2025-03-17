@@ -1,3 +1,6 @@
+
+import os
+
 import discord
 from discord.ext import commands
 import random
@@ -11,11 +14,15 @@ from discord.ui import View, Select
 import asyncio
 import webserver
 
+import webserver
+
+
+DISCORD_TOKEN = os.environ['discordkey']
 bot = commands.Bot(command_prefix="$", intents=discord.Intents.all())
 
 @bot.event 
 async def on_ready():
-    await bot.change_presence(status=discord.Status, activity=discord.Activity(type=discord.ActivityType.watching, name="BHC server"))
+    await bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name="BHC server"))
     print("Bot is up and ready!")
     try:
         synced = await bot.tree.sync()
